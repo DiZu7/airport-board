@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = (env, argv) => {
   const isProduction = argv.mode === 'production';
@@ -34,7 +35,14 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         template: './src/index.html',
       }),
+      new CopyPlugin({
+        patterns: [
+          { from: '_redirects', to: '' },
+          { from: 'src/img', to: 'dist' },
+        ],
+      }),
     ],
+
     resolve: {
       extensions: ['.js', '.jsx'],
     },
