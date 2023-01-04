@@ -5,7 +5,6 @@ import './index.scss';
 // import TodoList from './tasks/components/TodoList';
 
 const App = () => {
-  return;
   //  <Provider store={store}>
   //  </Provider>
 };
