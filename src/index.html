@@ -4,42 +4,148 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>"Kyiv" International Airport</title>
   </head>
   <body>
     <div class="page">
-      <header>
-        <div>
-          <a href="#">
-            <img src="https://iev.aero/_nuxt/img/logo.c97e286.png" alt="logo" />
-          </a>
+      <header class="header">
+        <div class="header__logo logo">
+          <span class="logo__title">KYIV</span>
+          <span class="logo__subtitle">Sikorsky Airport</span>
+          <!-- <img
+            src="https://gromcode.s3.eu-central-1.amazonaws.com/front-end/html-css/lesson24/hw1/icon.png"
+            alt="logo"
+            class="logo__image"
+          /> -->
         </div>
-        <div>
-          <ul>
-            <li>
-              <span>For passengers</span>
-            </li>
-            <li>
-              <span>IEV Services</span>
-            </li>
-            <li>
-              <span>VIP</span>
-            </li>
-            <li>
-              <span>Corporate</span>
-            </li>
-            <li>
-              <span>Press Room</span>
-            </li>
-            <li>
-              <button>EN</button>
-            </li>
-          </ul>
-        </div>
+        <nav class="header__links">
+          <a href="#" class="header__link">For passengers</a>
+          <a href="#" class="header__link">IEV Services</a>
+          <a href="#" class="header__link">VIP</a>
+          <a href="#" class="header__link">Corporate</a>
+          <a href="#" class="header__link">Press Room</a>
+          <a href="#" class="header__link">EN</a>
+        </nav>
       </header>
-      <main></main>
-      <footer></footer>
+
+      <section class="main-search">
+        <div class="main-search__container">
+          <h2 class="main-search__title">Flight Search</h2>
+          <form class="main-search__form form-search">
+            <div class="form-search__icon">
+              <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+            </div>
+            <input
+              class="form-search__input"
+              type="text"
+              placeholder="Airline, destination or flight #"
+            />
+            <button class="form-search__btn" type="submit">Search</button>
+          </form>
+          <div class="main-search__nav">
+            <a href="#" class="main-search__flight flight">
+              <div class="flight__icon">
+                <i class="fa-solid fa-plane-departure"></i>
+              </div>
+              All departures
+            </a>
+            <a href="#" class="main-search__flight flight flight_arrivals">
+              <div class="flight__icon">
+                <i class="fa-solid fa-plane-arrival"></i>
+              </div>
+              All arrivals
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="search-flights">
+        <h2 class="search-flights__title">Search Flight</h2>
+        <form class="search-flights__form form-search">
+          <div class="form-search__icon">
+            <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+          </div>
+          <input
+            class="form-search__input"
+            type="text"
+            placeholder="Airline, destination or flight #"
+          />
+          <button class="form-search__btn" type="submit">Search</button>
+        </form>
+        <div class="search-flights__container">
+          <div class="search-flights__nav">
+            <a href="#" class="search-flights__flight flight active">
+              <div class="flight__icon">
+                <i class="fa-solid fa-plane-departure"></i>
+              </div>
+              departures
+            </a>
+            <a href="#" class="search-flights__flight search-flights__flight_arrivals flight">
+              <div class="flight__icon">
+                <i class="fa-solid fa-plane-arrival"></i>
+              </div>
+              arrivals
+            </a>
+          </div>
+          <div class="search-flights__calendar-dates-wrap">
+            <div class="search-flights__calendar-wrap">
+              <input
+                type="text"
+                readonly="readonly"
+                class="search-flights__calendar-date"
+                value="04/01"
+              />
+              <div class="search-flights__calendar">
+                <i class="fa-regular fa-calendar"></i>
+              </div>
+            </div>
+
+            <div class="search-flights__dates">
+              <div class="date yesterday">
+                <div class="date__num">04/01</div>
+                <div class="date__title">yesterday</div>
+              </div>
+              <div class="date today">
+                <div class="date__num">05/01</div>
+                <div class="date__title">today</div>
+              </div>
+              <div class="date tomorrow">
+                <div class="date__num">06/01</div>
+                <div class="date__title">tomorrow</div>
+              </div>
+            </div>
+          </div>
+          <div class="search-flights__result">
+            <div class="nothing-found hidden">
+              <span>No Flight</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section"></section>
+
+      <footer class="footer"></footer>
     </div>
+
     <div id="root"></div>
   </body>
 </html>
