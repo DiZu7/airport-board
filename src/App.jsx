@@ -9,13 +9,13 @@ import SearchFlights from './features/search-flights/SearchFlights';
 
 const App = () => {
   return (
-    <div class="page">
+    <div className="page">
       <Header />
       <MainSearch />
       <SearchFlights />
 
-      <section class="optional"></section>
-      <footer class="footer"></footer>
+      <section className="optional"></section>
+      <footer className="footer"></footer>
     </div>
   );
 };
