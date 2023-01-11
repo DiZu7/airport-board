@@ -1,0 +1,31 @@
+.main-search {
+  padding: 60px 0;
+  margin-bottom: 40px;
+  background: url(https://iev.aero/images/main.jpg) no-repeat center;
+  background-size: cover;
+  box-shadow: 0 10px 15px rgb(0 0 0 / 38%);
+  color: #fff;
+
+  &__container {
+    width: 740px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    margin-bottom: 20px;
+    font-size: 70px;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  &__form {
+    margin-bottom: 20px;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+  }
+}
