@@ -10,7 +10,7 @@
   }
 }
 
-.flight {
+.btn {
   display: flex;
   width: 340px;
   font-size: 20px;
@@ -27,15 +27,6 @@
   &__icon {
     padding: 0 30px;
     font-size: 30px;
-  }
-
-  //   &_departures {
-  //     border-radius: 10px 50px 10px 10px;
-  //   }
-  &_arrivals {
-    border-radius: 50px 10px 10px 10px;
-
-    flex-direction: row-reverse;
   }
 }
 
@@ -83,13 +74,3 @@
     cursor: pointer;
   }
 }
-
-
-
-.active {
-  color: #1eb7ee;
-  background-color: #fff;
-  border: none;
-  border-radius: 60px 60px 0 0;
-}
-

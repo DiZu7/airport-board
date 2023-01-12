@@ -1,0 +1,148 @@
+.timetable {
+  // width: 1120px;
+  width: 75%;
+  color: #000;
+  background-color: #fff;
+  border-radius: 60px 60px 0 0;
+  overflow: hidden;
+
+  &__nav {
+    margin-bottom: 25px;
+  }
+
+  &__calendar-dates-wrap {
+    display: flex;
+    padding-left: 20px;
+    margin-bottom: 20px;
+  }
+  &__calendar-wrap {
+    width: 40px;
+  }
+  &__calendar-date {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    color: #1eb7ee;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  &__calendar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    color: #fff;
+    outline: none;
+    background-color: #1eb7ee;
+    font-size: 28px;
+  }
+
+  &__dates {
+    display: flex;
+    width: 300px;
+    margin-left: 30px;
+  }
+
+  &__board {
+    padding: 0 50px 40px;
+  }
+}
+
+.flights-nav {
+  display: flex;
+  background-color: #73d2f0;
+  border: 0;
+  &__btn {
+    border: 0;
+    border-radius: 0;
+    background-color: transparent;
+    color: #fff;
+    overflow: hidden;
+    flex: 1;
+
+    justify-content: end;
+    padding-right: 100px;
+
+    &_arrivals {
+      justify-content: start;
+      padding-right: 0;
+      padding-left: 100px;
+    }
+  }
+}
+
+.date {
+  flex: 1 0 0;
+  cursor: pointer;
+  text-align: center;
+  color: #b8b9b9;
+  padding-bottom: 5px;
+  border-bottom: 3px solid #d0d0d0;
+
+  transition: 0.3s ease-out;
+  //   position: relative;
+
+  &__num {
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+  &__title {
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+}
+
+.date-active {
+  color: #1eb7ee;
+  background-color: #fff;
+  border-color: #1eb7ee;
+}
+
+.board {
+  &__flight-row {
+    display: flex;
+
+    &:nth-child(odd) {
+      background-color: #1eb7ee33;
+    }
+    &:nth-child(even) {
+      background-color: #1eb7ee4d;
+    }
+    &:first-child {
+      background-color: #fff;
+      font-size: 20px;
+    }
+  }
+
+  &__flight-col {
+    text-transform: uppercase;
+    font-weight: 400;
+    line-height: 60px;
+    padding: 0 20px;
+
+    &_schedule {
+      flex: 1;
+    }
+    &_destination {
+      flex: 2;
+    }
+    &_flight {
+      flex: 2;
+    }
+    &_terminal {
+      flex: 1;
+    }
+    &_status {
+      flex: 2;
+    }
+  }
+}
+
+.active {
+  color: #1eb7ee;
+  background-color: #fff;
+  border: none;
+  border-radius: 60px 60px 0 0;
+}
