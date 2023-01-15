@@ -48,6 +48,9 @@
   &__board {
     padding: 0 50px 40px;
   }
+  &__react-calendar-wrap {
+    // position: absolute;
+  }
 }
 
 .flights-nav {
@@ -92,12 +95,11 @@
     font-weight: 700;
     text-transform: uppercase;
   }
-}
-
-.date-active {
-  color: #1eb7ee;
-  background-color: #fff;
-  border-color: #1eb7ee;
+  &_active {
+    color: #1eb7ee;
+    background-color: #fff;
+    border-color: #1eb7ee;
+  }
 }
 
 .board {

@@ -3,7 +3,7 @@ import './nothingFound.scss';
 
 const NothingFound = () => {
 	return (
-    <div class="nothing-found hidden">
+    <div className="nothing-found hidden">
       <span>No Flight</span>
     </div>
   );
