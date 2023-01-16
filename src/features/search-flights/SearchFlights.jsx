@@ -33,10 +33,12 @@ const SearchFlights = () => {
 
   const getDepartures = () => {
     setBtnDepartureActive(true);
+    // setDateForRender(navigationDate);
   };
 
   const getArrivals = () => {
     setBtnDepartureActive(false);
+    // setDateForRender(navigationDate);
   };
 
   const goNextDate = () => {
@@ -60,7 +62,6 @@ const SearchFlights = () => {
   const handleFlightSearch = flightNumber => {
     setSearchedFlightNumber(flightNumber);
   };
-
 
   const filteredByDateFlightsList = isBtnDepartureActive
     ? flightsList.departure.filter(
