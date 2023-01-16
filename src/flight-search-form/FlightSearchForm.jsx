@@ -4,22 +4,23 @@ import './flightSearchForm.scss';
 const FlightSearchForm = ({ handleFlightSearch, setFlifghtSearchFormActive }) => {
   const [searchedFlightNumber, setsearchedFlightNumber] = useState('');
 
-  const handleChange = e => {
-    console.log(e.target.value);
-    setsearchedFlightNumber(e.target.value);
-    console.log(searchedFlightNumber);
-    if (searchedFlightNumber === '') {
-      setFlifghtSearchFormActive(false);
-    }
-  };
+  // const handleChange = e => {
+  //   setsearchedFlightNumber(e.target.value);
+
+  //   // searchedFlightNumber === ''
+  //   //   ? setFlifghtSearchFormActive(false)
+  //   //   : setFlifghtSearchFormActive(true);
+  //   // handleFlightSearch(searchedFlightNumber);
+  // };
 
   return (
     <form
       className="search-flights__form form-search"
       onSubmit={e => {
         e.preventDefault();
+
         handleFlightSearch(searchedFlightNumber);
-        setFlifghtSearchFormActive(true);
+        // setFlifghtSearchFormActive(true);
       }}
     >
       <div className="form-search__icon">
@@ -30,7 +31,8 @@ const FlightSearchForm = ({ handleFlightSearch, setFlifghtSearchFormActive }) =>
         type="text"
         placeholder="flight #"
         value={searchedFlightNumber}
-        onChange={handleChange}
+        onChange={e => setsearchedFlightNumber(e.target.value)}
+        // onChange={handleChange}
       />
       <button className="form-search__btn" type="submit">
         Search

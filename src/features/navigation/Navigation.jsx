@@ -56,7 +56,8 @@ const Navigation = ({
           // className="flights-nav__btn btn active"
           onClick={() => {
             // setBtnDepartureActive(true);
-            getDepartures(moment(navigationDate).format('DD-MM-YYYY'));
+            getDepartures();
+            // getDepartures(moment(navigationDate).format('DD-MM-YYYY')); CORRECT
             // getDepartures(moment(currentDate).format('DD-MM-YYYY'));
           }}
         >
@@ -70,7 +71,8 @@ const Navigation = ({
           // className="flights-nav__btn flights-nav__btn_arrivals btn"
           onClick={() => {
             // setBtnDepartureActive(false);
-            getArrivals(moment(navigationDate).format('DD-MM-YYYY'));
+            getArrivals();
+            // getArrivals(moment(navigationDate).format('DD-MM-YYYY')); CORRECT
             // getArrivals(moment(currentDate).format('DD-MM-YYYY'));
           }}
         >
