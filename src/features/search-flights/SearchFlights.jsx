@@ -5,7 +5,7 @@ import Timetable from '../timetable/Timetable';
 import './searchFlights.scss';
 import moment from 'moment';
 
-const testDate = new Date();
+const testDate = new Date(); // moment js should use
 
 const SearchFlights = () => {
   const [navigationDate, setDateNavigation] = useState(testDate);
@@ -13,7 +13,6 @@ const SearchFlights = () => {
 
   const [flightsList, setFlightsList] = useState({ departure: [], arrival: [] });
   const [isBtnDepartureActive, setBtnDepartureActive] = useState(true);
-
   const [searchedFlightNumber, setSearchedFlightNumber] = useState('');
 
   useEffect(() => {
@@ -24,10 +23,7 @@ const SearchFlights = () => {
 
   const fetchFlights = date => {
     fetchFlightsList(date).then(flightsListAll => {
-      console.log(flightsListAll);
-      console.log(flightsListAll.body);
       setFlightsList(flightsListAll.body);
-      console.log(flightsList);
     });
   };
 

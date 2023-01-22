@@ -14,20 +14,12 @@ const Navigation = ({
   getArrivals,
   getDepartures,
   isBtnDepartureActive,
-  setBtnDepartureActive,
   getCalendarValue,
   dateForRender,
 }) => {
   const prevDate = moment(navigationDate).subtract(1, 'day');
   const nextDate = moment(navigationDate).add(1, 'day');
-  // const prevDate = moment(currentDate).subtract(1, 'day');
-  // const nextDate = moment(currentDate).add(1, 'day');
 
-  // const [isBtnDepartureActive, setBtnDepartureActive] = useState(true);
-
-  // console.log(prevDate);
-  // console.log(nextDate);
-  // const [isBtnDepartureActive, setBtnDepartureActive] = useState(true);
 
   const [isReactCalendarActive, setReactCalendarActive] = useState(false);
 

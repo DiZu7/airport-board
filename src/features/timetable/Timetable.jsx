@@ -47,10 +47,6 @@ const Timetable = ({
           <div className="board__flight-col board__flight-col_status">Status</div>
         </li>
         {filteredByDateFlightsList
-
-          //     flightsList.filter(flight =>
-          // flight.timeDepShedule.includes(moment(currentDate).format('YYYY-MM-DD'))
-
           .map(
             flight =>
               isBtnDepartureActive ? (
@@ -72,16 +68,6 @@ const Timetable = ({
                   terminal={flight.term}
                 />
               ),
-            // <Flight CORECT
-            //   key={flight.ID}
-            //   {...flight}
-            //   schedule={moment(flight.schedule).format('HH:mm')}
-            //   // schedule={moment(flight.timeArrShedule).format('HH:mm')}
-            //   destination={flight.destination}
-            //   // destination={flight['airportFromID.city_en']}
-            //   flightNumber={flight.flightNumber}
-            //   terminal={flight.terminal}
-            // />
           )}
         {filteredByDateFlightsList.length === 0 && <NothingFound />}
       </ul>
