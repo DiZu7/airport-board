@@ -3,7 +3,7 @@
 Information about the flight schedule (arrival, departure) for today, yesterday, tomorrow and the selected date from the calendar.
 Ability to search the flight by flight number or destination/
 
-### [Site link](https://meek-cascaron-e168c1.netlify.app/)
+### [Site link](https://tangerine-kulfi-698f01.netlify.app)
 
 ### The tech stack is:
 
