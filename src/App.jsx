@@ -1,20 +1,16 @@
 import React from 'react';
-import './styles/common.scss';
-import Header from './features/header/Header';
-import SearchFlights from './features/search-flights/SearchFlights';
-
-// import './styles/index.scss';
-// import { Provider } from 'react-redux';
-// import store from './store.js';
+import { Provider } from 'react-redux';
+import store from './features/store/store';
+import AirportBoard from './features/airport-board/AirportBoard';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 const App = () => {
   return (
-    <div className="page">
-      <Header />
-      <SearchFlights />
-      <section className="optional"></section>
-      <footer className="footer"></footer>
-    </div>
+    <Provider store={store}>
+      <Router>
+        <AirportBoard/>
+      </Router>
+    </Provider>
   );
 };
 

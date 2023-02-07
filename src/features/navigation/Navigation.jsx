@@ -1,145 +1,111 @@
 import moment from 'moment/moment';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import './navigation.scss';
-import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import Calendar from 'react-calendar';
+import PropTypes from 'prop-types';
+import { DATE_FORMAT, DATE_FORMAT_SHORT, yesterday, today, tomorrow } from '../../utils/dateUtils';
 
-const Navigation = ({
-  goNextDate,
-  goCurrentDate,
-  goPrevDate,
-  testDate,
-  navigationDate,
-  getArrivals,
-  getDepartures,
-  isBtnDepartureActive,
-  getCalendarValue,
-  dateForRender,
-}) => {
-  const prevDate = moment(navigationDate).subtract(1, 'day');
-  const nextDate = moment(navigationDate).add(1, 'day');
-
-
+const Navigation = ({ searchedDate, setSearchedDate, url }) => {
   const [isReactCalendarActive, setReactCalendarActive] = useState(false);
 
-  const [calendarValue, setCalendarValue] = useState(testDate);
-  const [dateActive, setDateActive] = useState('today');
+  const setClassNamesDate = date =>
+    classNames('date', {
+      date_active: searchedDate === date.format(DATE_FORMAT),
+    });
 
   const handleChange = nextValue => {
-    setCalendarValue(nextValue);
-    getCalendarValue(nextValue);
+    setSearchedDate(moment(nextValue).format(DATE_FORMAT));
     setReactCalendarActive(false);
-    console.log(nextValue);
-    console.log(navigationDate);
   };
-
-  // const handleChange = e => {
-  //   setCalendarValue(e.target.value);
-  //   console.log(e.target.value);
-  //   console.log(calendarValue);
-  // };
 
   return (
     <>
-      <div className="timetable__nav flights-nav">
-        <button
-          className={classNames('flights-nav__btn btn', { active: isBtnDepartureActive })}
-          // className="flights-nav__btn btn active"
-          onClick={() => {
-            // setBtnDepartureActive(true);
-            getDepartures();
-            // getDepartures(moment(navigationDate).format('DD-MM-YYYY')); CORRECT
-            // getDepartures(moment(currentDate).format('DD-MM-YYYY'));
-          }}
+      <div className="search-flights__nav flights-nav">
+        <Link
+          to="/departure"
+          className={classNames('flights-nav__btn btn', { active: url !== '/arrival' })}
         >
           <div className="btn__icon">
             <i className="fa-solid fa-plane-departure"></i>
           </div>
           departures
-        </button>
-        <button
-          className={classNames('flights-nav__btn btn', { active: !isBtnDepartureActive })}
-          // className="flights-nav__btn flights-nav__btn_arrivals btn"
-          onClick={() => {
-            // setBtnDepartureActive(false);
-            getArrivals();
-            // getArrivals(moment(navigationDate).format('DD-MM-YYYY')); CORRECT
-            // getArrivals(moment(currentDate).format('DD-MM-YYYY'));
-          }}
+        </Link>
+        <Link
+          to="/arrival"
+          className={classNames('flights-nav__btn flights-nav__btn_arrival btn', {
+            active: url === '/arrival',
+          })}
         >
           <div className="btn__icon">
             <i className="fa-solid fa-plane-arrival"></i>
           </div>
           arrivals
-        </button>
+        </Link>
       </div>
-      <div className="timetable__calendar-dates-wrap">
-        <div className="timetable__calendar-wrap" onClick={() => setReactCalendarActive(true)}>
+      <div className="search-flights__calendar-dates-wrap">
+        <div
+          className="search-flights__calendar-wrap"
+          onClick={() => setReactCalendarActive(!isReactCalendarActive)}
+        >
           <input
             type="text"
             readOnly="readonly"
-            className="timetable__calendar-date"
-            // value={moment(calendarValue).format('DD/MM')}
-            // value={moment(calendarValue).format('DD/MM')}
-            value={moment(dateForRender).format('DD/MM')}
+            className="search-flights__calendar-date"
+            value={moment(searchedDate, DATE_FORMAT).format(DATE_FORMAT_SHORT)}
           />
-          <div className="timetable__calendar">
+          <div className="search-flights__calendar">
             <i className="fa-regular fa-calendar"></i>
           </div>
         </div>
 
-        <div className="timetable__dates">
-          <div
-            className={classNames('date', {
-              date_active: dateActive === 'yesterday',
-            })}
-            onClick={() => {
-              setDateActive('yesterday');
-              goPrevDate();
-            }}
-          >
-            <div className="date__num">{prevDate.format('DD/MM')}</div>
-            <div className="date__title">yesterday</div>
+        <div className="search-flights__dates">
+          <div className={setClassNamesDate(yesterday)}>
+            <div className="date__num">{yesterday.format(DATE_FORMAT_SHORT)}</div>
+            <div
+              className="date__title"
+              onClick={() => setSearchedDate(yesterday.format(DATE_FORMAT))}
+            >
+              yesterday
+            </div>
           </div>
-          <div
-            className={classNames('date', { date_active: dateActive === 'today' })}
-            onClick={() => {
-              setDateActive('today');
-              goCurrentDate();
-            }}
-          >
-            <div className="date__num">{moment(navigationDate).format('DD/MM')}</div>
-            <div className="date__title">today</div>
+          <div className={setClassNamesDate(today)}>
+            <div className="date__num">{today.format(DATE_FORMAT_SHORT)}</div>
+            <div className="date__title" onClick={() => setSearchedDate(today.format(DATE_FORMAT))}>
+              today
+            </div>
           </div>
-          <div
-            className={classNames('date', {
-              date_active: dateActive === 'tomorrow',
-            })}
-            onClick={() => {
-              setDateActive('tomorrow');
-              goNextDate();
-            }}
-          >
-            <div className="date__num">{nextDate.format('DD/MM')}</div>
-            <div className="date__title">tomorrow</div>
+
+          <div className={setClassNamesDate(tomorrow)}>
+            <div className="date__num">{tomorrow.format(DATE_FORMAT_SHORT)}</div>
+            <div
+              className="date__title"
+              onClick={() => setSearchedDate(tomorrow.format(DATE_FORMAT))}
+            >
+              tomorrow
+            </div>
           </div>
         </div>
       </div>
+
       {isReactCalendarActive && (
-        <div className="timetable__react-calendar-wrap">
+        <div className="search-flights__react-calendar-wrap">
           <Calendar
             onChange={handleChange}
-            // onChange={() => {
-            //   setCalendarValue;
-            //   getCalendarValue(calendarValue);
-            // }}
-            value={calendarValue}
+            value={new Date(moment(searchedDate, DATE_FORMAT).format())}
           />
         </div>
       )}
     </>
   );
+};
+
+Navigation.propTypes = {
+  url: PropTypes.string.isRequired,
+  searchedDate: PropTypes.string.isRequired,
+  setSearchedDate: PropTypes.func.isRequired,
 };
 
 export default Navigation;

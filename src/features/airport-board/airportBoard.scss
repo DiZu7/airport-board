@@ -1,0 +1,11 @@
+@import '../../styles/variables.scss';
+
+.optional {
+  flex-grow: 1;
+}
+
+.footer {
+  width: 100%;
+  height: 100px;
+  background: $color-grey;
+}

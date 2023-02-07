@@ -1,11 +1,13 @@
+@import '../../styles/variables.scss';
+
 .header {
   display: flex;
   justify-content: space-between;
 
   height: 92px;
   box-shadow: 0 5px 10px rgb(37 40 41 / 30%);
-  background-color: #1eb7ee;
-  color: #fff;
+  background-color: $color-blue;
+  color: $color-white;
 
   &__logo {
     margin-left: 120px;
@@ -19,7 +21,7 @@
 
   &__link {
     text-decoration: none;
-    color: #fff;
+    color: $color-white;
     padding: 0 35px;
     font-size: 20px;
     font-weight: 600;

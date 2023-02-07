@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 .logo {
   display: flex;
   flex-direction: column;
@@ -21,7 +23,7 @@
   font-weight: 600;
   line-height: 60px;
   cursor: pointer;
-  background: #fff;
+  background: $color-white;
   border-radius: 10px 50px 10px 10px;
 
   &__icon {
@@ -29,5 +31,3 @@
     font-size: 30px;
   }
 }
-
-

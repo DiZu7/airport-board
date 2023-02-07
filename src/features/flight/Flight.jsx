@@ -1,15 +1,28 @@
 import React from 'react';
+import moment from 'moment';
+import './flight.scss';
+import PropTypes from 'prop-types';
 
-const Flight = ({ schedule, destination, flightNumber, terminal, status }) => {
+const Flight = ({ flightData }) => {
   return (
-    <li className="board__flight-row">
-      <div className="board__flight-col board__flight-col_schedule">{schedule}</div>
-      <div className="board__flight-col board__flight-col_destination">{destination}</div>
-      <div className="board__flight-col board__flight-col_flight">{flightNumber}</div>
-      <div className="board__flight-col board__flight-col_terminal">{terminal}</div>
-      <div className="board__flight-col board__flight-col_status">{status}</div>
-    </li>
+    <tr className="timetable__line">
+      <td className="timetable__item">
+        {moment(flightData.timeDepShedule || flightData.timeArrShedule).format('HH:mm')}
+      </td>
+      <td className="timetable__item">
+        {flightData['airportToID.city_en'] || flightData['airportFromID.city_en']}
+      </td>
+      <td className="timetable__item">{`${flightData['carrierID.IATA'] || ''} ${
+        flightData.fltNo
+      }`}</td>
+      <td className="timetable__item">{flightData.term}</td>
+      <td className="timetable__item">{flightData.status}</td>
+    </tr>
   );
+};
+
+Flight.propTypes = {
+  flightData: PropTypes.object,
 };
 
 export default Flight;

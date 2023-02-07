@@ -1,0 +1,19 @@
+.timetable {
+  &__line {
+    display: flex;
+    &:nth-child(odd) {
+      background-color: #1eb7ee33;
+    }
+    &:nth-child(even) {
+      background-color: #1eb7ee4d;
+    }
+  }
+
+  &__item {
+    flex: 1;
+    padding: 0 20px;
+    font-weight: 400;
+    line-height: 60px;
+    text-transform: uppercase;
+  }
+}

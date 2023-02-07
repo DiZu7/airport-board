@@ -1,0 +1,98 @@
+@import '../../styles/variables.scss';
+
+.flights-nav {
+  display: flex;
+  background-color: #73d2f0;
+  &__btn {
+    flex: 1;
+    justify-content: end;
+    padding-right: 100px;
+    background-color: transparent;
+    color: $color-white;
+
+    &_arrival {
+      justify-content: start;
+      padding-right: 0;
+      padding-left: 100px;
+    }
+  }
+}
+
+.date {
+  flex: 1 0 0;
+  padding-bottom: 5px;
+  border-bottom: 3px solid #d0d0d0;
+  text-align: center;
+  color: #b8b9b9;
+  cursor: pointer;
+  transition: 0.3s ease-out;
+
+  &__num {
+    margin-bottom: 5px;
+    font-size: 12px;
+  }
+  &__title {
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  &_active {
+    border-color: $color-blue;
+    color: $color-blue;
+    background-color: $color-white;
+  }
+}
+
+.search-flights {
+  &__nav {
+    width: 75%;
+    margin: auto;
+    border-radius: 60px 60px 0 0;
+    color: $color-black;
+  }
+  &__calendar-dates-wrap {
+    display: flex;
+    width: 75%;
+    margin: auto;
+    padding: 25px 0 20px 20px;
+    background-color: $color-white;
+  }
+  &__calendar-wrap {
+    width: 40px;
+  }
+  &__calendar-date {
+    width: 100%;
+    border: none;
+    color: $color-blue;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  &__calendar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    background-color: $color-blue;
+    color: $color-white;
+    font-size: 28px;
+  }
+
+  &__dates {
+    display: flex;
+    width: 300px;
+    margin-left: 30px;
+  }
+  &__react-calendar-wrap {
+    position: absolute;
+    top: 520px;
+    left: 200px;
+  }
+}
+
+.active {
+  border-radius: 60px 60px 0 0;
+  color: $color-blue;
+  background-color: $color-white;
+}

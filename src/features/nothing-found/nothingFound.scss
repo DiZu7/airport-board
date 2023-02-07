@@ -1,4 +1,7 @@
+@import '../../styles/variables.scss';
+
 .nothing-found {
+  width: 75%;
   padding: 0 50px;
   margin: auto;
   display: flex;
@@ -10,4 +13,5 @@
 
   min-height: 300px;
   color: #2f2f2f;
+  background-color: $color-white;
 }

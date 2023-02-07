@@ -1,78 +1,52 @@
-import React, { useEffect, useState } from 'react';
-import { fetchFlightsList } from '../../gateway';
+import React from 'react';
 import Flight from '../flight/Flight';
-// import NothingFound from '../nothing-found/NothingFound';
 import './timetable.scss';
 import moment from 'moment';
-import Navigation from '../navigation/Navigation';
-import NothingFound from '../nothing-found/NothingFound';
+import PropTypes from 'prop-types';
+import { DATE_FORMAT, DATE_FORMAT_REVERSE } from '../../utils/dateUtils';
 
-// solution 2 - все працює, але не подобається як витягує дані з сервера
-// const testDate = '2022-02-22T04:13:00Z';
-
-const Timetable = ({
-  navigationDate,
-  testDate,
-  goCurrentDate,
-  goNextDate,
-  goPrevDate,
-  getArrivals,
-  getDepartures,
-  isBtnDepartureActive,
-  getCalendarValue,
-  dateForRender,
-  filteredByDateFlightsList,
-}) => {
-  return (
-    <div className="search-flights__timetable timetable">
-      <Navigation
-        navigationDate={navigationDate}
-        testDate={testDate}
-        goCurrentDate={goCurrentDate}
-        goNextDate={goNextDate}
-        goPrevDate={goPrevDate}
-        getArrivals={getArrivals}
-        getDepartures={getDepartures}
-        isBtnDepartureActive={isBtnDepartureActive}
-        getCalendarValue={getCalendarValue}
-        dateForRender={dateForRender}
-      />
-
-      <ul className="timetable__board board">
-        <li className="board__flight-row">
-          <div className="board__flight-col board__flight-col_schedule">Schedule</div>
-          <div className="board__flight-col board__flight-col_destination">To</div>
-          <div className="board__flight-col board__flight-col_flight">Flight</div>
-          <div className="board__flight-col board__flight-col_terminal">Terminal</div>
-          <div className="board__flight-col board__flight-col_status">Status</div>
-        </li>
-        {filteredByDateFlightsList
-          .map(
-            flight =>
-              isBtnDepartureActive ? (
-                <Flight
-                  key={flight.ID}
-                  {...flight}
-                  schedule={moment(flight.timeDepShedule).format('HH:mm')}
-                  destination={flight['airportToID.city_en']}
-                  flightNumber={flight.fltNo}
-                  terminal={flight.term}
-                />
-              ) : (
-                <Flight
-                  key={flight.ID}
-                  {...flight}
-                  schedule={moment(flight.timeArrShedule).format('HH:mm')}
-                  destination={flight['airportFromID.city_en']}
-                  flightNumber={flight.fltNo}
-                  terminal={flight.term}
-                />
-              ),
-          )}
-        {filteredByDateFlightsList.length === 0 && <NothingFound />}
-      </ul>
-    </div>
+const Timetable = ({ flights, searchedDate, searchedText, url }) => {
+  const filteredByDateFlights = flights.filter(flightData =>
+    flightData[url === '/departure' ? 'timeDepShedule' : 'timeArrShedule'].includes(
+      moment(searchedDate, DATE_FORMAT).format(DATE_FORMAT_REVERSE),
+    ),
   );
+
+  return (
+    <table className="search-flights__timetable timetable">
+      <thead>
+        <tr className=" timetable__line-header">
+          <th className="timetable__item">Schedule</th>
+          <th className="timetable__item">Destination</th>
+          <th className="timetable__item">Flight</th>
+          <th className="timetable__item">Terminal</th>
+          <th className="timetable__item">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {searchedText
+          ? filteredByDateFlights
+              .filter(
+                flightData =>
+                  flightData.fltNo.includes(searchedText) ||
+                  flightData[url === '/departure' ? 'airportToID.city_en' : 'airportFromID.city_en']
+                    .toLowerCase()
+                    .includes(searchedText.toLowerCase()),
+              )
+              .map(flightData => <Flight key={flightData.ID} flightData={flightData} />)
+          : filteredByDateFlights.map(flightData => (
+              <Flight key={flightData.ID} flightData={flightData} />
+            ))}
+      </tbody>
+    </table>
+  );
+};
+
+Timetable.propTypes = {
+  flights: PropTypes.array,
+  url: PropTypes.string.isRequired,
+  searchedText: PropTypes.string,
+  searchedDate: PropTypes.string.isRequired,
 };
 
 export default Timetable;
