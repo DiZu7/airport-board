@@ -3,6 +3,9 @@
 Information about the flight schedule (arrival, departure) for today, yesterday, tomorrow and the selected date from the calendar.
 Ability to search the flight by flight number or destination/
 
+The sky is closed and all flights are canceled from February 24, 2022 due to the war.
+Therefore, it is possible to view flights for previous dates.
+
 ### [Site link](https://tangerine-kulfi-698f01.netlify.app)
 
 ### The tech stack is:
