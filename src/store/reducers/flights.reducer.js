@@ -1,4 +1,4 @@
-import { FLIGHTS_LIST_RECIEVED } from './flights.actions';
+import { FLIGHTS_LIST_RECIEVED } from '../actions/flights.actions';
 
 const initialState = {
   flightsList: {

@@ -1,5 +1,5 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import flightsReducer from './flights.reducer';
+import flightsReducer from './reducers/flights.reducer';
 import thunk from 'redux-thunk';
 
 const reducer = combineReducers({

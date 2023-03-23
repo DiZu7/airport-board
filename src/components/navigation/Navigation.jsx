@@ -1,6 +1,6 @@
 import moment from 'moment/moment';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import './navigation.scss';
 import 'react-calendar/dist/Calendar.css';
@@ -24,7 +24,7 @@ const Navigation = ({ searchedDate, setSearchedDate, url }) => {
   return (
     <>
       <div className="search-flights__nav flights-nav">
-        <Link
+        <NavLink
           to="/departure"
           className={classNames('flights-nav__btn btn', { active: url !== '/arrival' })}
         >
@@ -32,8 +32,8 @@ const Navigation = ({ searchedDate, setSearchedDate, url }) => {
             <i className="fa-solid fa-plane-departure"></i>
           </div>
           departures
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
           to="/arrival"
           className={classNames('flights-nav__btn flights-nav__btn_arrival btn', {
             active: url === '/arrival',
@@ -43,7 +43,7 @@ const Navigation = ({ searchedDate, setSearchedDate, url }) => {
             <i className="fa-solid fa-plane-arrival"></i>
           </div>
           arrivals
-        </Link>
+        </NavLink>
       </div>
       <div className="search-flights__calendar-dates-wrap">
         <div

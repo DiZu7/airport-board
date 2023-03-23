@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import FlightSearchForm from '../flight-search-form/FlightSearchForm';
 import Timetable from '../timetable/Timetable';
 import './searchFlights.scss';
@@ -16,19 +16,6 @@ const SearchFlights = ({
   searchedText,
   setSearchedText,
 }) => {
-  const navigate = useNavigate();
-
-  const searchedData = QueryString.stringify({
-    date: searchedDate,
-    ...(searchedText && { search: searchedText }),
-  });
-
-  const newPath = (urlPage, searchInfo) => navigate(`${urlPage}?${searchInfo}`);
-
-  useEffect(() => {
-    newPath(url, searchedData);
-  }, [searchedData]);
-
   return (
     <main className="search-flights">
       <FlightSearchForm setSearchedText={setSearchedText} />

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Routes, Navigate, useLocation } from 'react-router-dom';
+import { Route, Routes, Navigate, useLocation, useSearchParams } from 'react-router-dom';
 import '../../styles/common.scss';
 import './airportBoard.scss';
 import Header from '../header/Header';
@@ -7,32 +7,39 @@ import Departure from '../departure/Departure';
 import Arrival from '../arrival/Arrival';
 import moment from 'moment';
 import { connect } from 'react-redux';
-import * as flightsActions from '../../store/flights.actions';
-import { flightsListSelector } from '../../store/flights.selectors';
+import * as flightsActions from '../../store/actions/flights.actions';
+import { flightsListSelector } from '../../store/selectors/flights.selectors';
 import PropTypes from 'prop-types';
 import * as QueryString from 'qs';
 import { DATE_FORMAT } from '../../utils/dateUtils';
 
 const AirportBoard = ({ flights, getFlightsList }) => {
-  const searchParamValue = useLocation().search;
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const [searchedDate, setSearchedDate] = useState(
-    searchParamValue === ''
-      ? moment().format(DATE_FORMAT)
-      : QueryString.parse(searchParamValue)['?date'],
+    searchParams.get('date') ? searchParams.get('date') : moment().format(DATE_FORMAT),
   );
 
-  const [searchedText, setSearchedText] = useState('');
+  const [searchedText, setSearchedText] = useState(
+    searchParams.get('search') ? searchParams.get('search') : '',
+  );
 
   useEffect(() => {
     getFlightsList(searchedDate);
   }, [searchedDate]);
 
+  useEffect(() => {
+    setSearchParams({
+      date: searchedDate,
+      ...(searchedText && { search: searchedText }),
+    });
+  }, [searchedDate, searchedText, searchParams]);
+
   return (
     <div className="page">
       <Header />
       <Routes>
-        <Route path="*" element={<Navigate to="/departure" />}></Route>
+        <Route path="/" element={<Navigate replace to="/departure" />} />
         <Route
           path="/departure"
           element={
@@ -42,6 +49,7 @@ const AirportBoard = ({ flights, getFlightsList }) => {
               setSearchedDate={setSearchedDate}
               searchedText={searchedText}
               setSearchedText={setSearchedText}
+              setSearchParams={setSearchParams}
             />
           }
         />
@@ -54,6 +62,7 @@ const AirportBoard = ({ flights, getFlightsList }) => {
               setSearchedDate={setSearchedDate}
               searchedText={searchedText}
               setSearchedText={setSearchedText}
+              setSearchParams={setSearchParams}
             />
           }
         />

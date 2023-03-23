@@ -5,7 +5,8 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import { DATE_FORMAT, DATE_FORMAT_REVERSE } from '../../utils/dateUtils';
 
-const Timetable = ({ flights, searchedDate, searchedText, url }) => {
+
+  const Timetable = ({ flights, searchedDate, searchedText, url }) => {
   const filteredByDateFlights = flights.filter(flightData =>
     flightData[url === '/departure' ? 'timeDepShedule' : 'timeArrShedule'].includes(
       moment(searchedDate, DATE_FORMAT).format(DATE_FORMAT_REVERSE),

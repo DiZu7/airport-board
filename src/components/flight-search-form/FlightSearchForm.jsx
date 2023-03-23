@@ -1,9 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './flightSearchForm.scss';
+import { useSearchParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const FlightSearchForm = ({ setSearchedText }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const [searchedInputValue, setSearchedInputValue] = useState('');
+
+  useEffect(() => {
+    searchParams.get('search') && setSearchedInputValue(searchParams.get('search'));
+  }, [searchParams.get('search')]);
+
+  console.log(searchedInputValue);
   return (
     <div className="search-flights__form-wrap">
       <h2 className="search-flights__title">Flight Search</h2>

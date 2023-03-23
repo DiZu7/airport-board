@@ -3,7 +3,13 @@ import { useLocation } from 'react-router-dom';
 import SearchFlights from '../search-flights/SearchFlights';
 import PropTypes from 'prop-types';
 
-const Departure = ({ flights, searchedDate, setSearchedDate, searchedText, setSearchedText }) => {
+const Departure = ({
+  flights,
+  searchedDate,
+  setSearchedDate,
+  searchedText,
+  setSearchedText,
+}) => {
   const url = useLocation().pathname;
   return (
     <SearchFlights
