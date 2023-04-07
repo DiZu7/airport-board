@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Route, Routes, Navigate, useSearchParams } from 'react-router-dom';
 import '../../../styles/common.scss';
 import './airportBoard.scss';
-import Header from '../../../header/Header';
+import Header from '../header/Header';
 import Departure from '../departure/Departure';
 import Arrival from '../arrival/Arrival';
 import moment from 'moment';
