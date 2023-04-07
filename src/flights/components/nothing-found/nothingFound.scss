@@ -1,9 +1,9 @@
-@import '../../styles/variables.scss';
+@import '../../../styles/variables.scss';
 
 .nothing-found {
   width: 75%;
   padding: 0 50px;
-  margin: auto;
+  margin: 0 auto 50px;
   display: flex;
 
   justify-content: center;

@@ -17,13 +17,15 @@
   width: 340px;
   font-size: 20px;
 
-  color: #1eb7ee;
+  color: $color-white;
+  // color: #1eb7ee;
   text-transform: uppercase;
   text-decoration: none;
   font-weight: 600;
   line-height: 60px;
   cursor: pointer;
-  background: $color-white;
+  background: #1eb7ee;
+  // background: $color-white;
   border-radius: 10px 50px 10px 10px;
 
   &__icon {

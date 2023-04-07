@@ -1,4 +1,4 @@
-import * as flightsGateway from '../../gateways/flights.gateways.js';
+import * as flightsGateway from '../gateways/flights.gateways.js';
 
 export const FLIGHTS_LIST_RECIEVED = 'FLIGHTS_LIST_RECIEVED';
 

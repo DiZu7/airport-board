@@ -6,7 +6,13 @@ import './navigation.scss';
 import 'react-calendar/dist/Calendar.css';
 import Calendar from 'react-calendar';
 import PropTypes from 'prop-types';
-import { DATE_FORMAT, DATE_FORMAT_SHORT, yesterday, today, tomorrow } from '../../utils/dateUtils';
+import {
+  DATE_FORMAT,
+  DATE_FORMAT_SHORT,
+  yesterday,
+  today,
+  tomorrow,
+} from '../../../utils/dateUtils';
 
 const Navigation = ({ searchedDate, setSearchedDate, url }) => {
   const [isReactCalendarActive, setReactCalendarActive] = useState(false);

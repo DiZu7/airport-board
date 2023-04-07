@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import store from './store/store';
-import AirportBoard from './components/airport-board/AirportBoard';
+import store from './store';
+import AirportBoard from './flights/components/airport-board/AirportBoard';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 const App = () => {

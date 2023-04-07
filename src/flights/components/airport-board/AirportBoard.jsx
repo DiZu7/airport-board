@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Routes, Navigate, useLocation, useSearchParams } from 'react-router-dom';
-import '../../styles/common.scss';
+import { Route, Routes, Navigate, useSearchParams } from 'react-router-dom';
+import '../../../styles/common.scss';
 import './airportBoard.scss';
-import Header from '../header/Header';
+import Header from '../../../header/Header';
 import Departure from '../departure/Departure';
 import Arrival from '../arrival/Arrival';
 import moment from 'moment';
 import { connect } from 'react-redux';
-import * as flightsActions from '../../store/actions/flights.actions';
-import { flightsListSelector } from '../../store/selectors/flights.selectors';
+import * as flightsActions from '../../flights.actions';
+import { flightsListSelector } from '../../flights.selectors';
 import PropTypes from 'prop-types';
-import * as QueryString from 'qs';
-import { DATE_FORMAT } from '../../utils/dateUtils';
+import { DATE_FORMAT } from '../../../utils/dateUtils';
 
 const AirportBoard = ({ flights, getFlightsList }) => {
   const [searchParams, setSearchParams] = useSearchParams();
