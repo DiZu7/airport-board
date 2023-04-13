@@ -2,18 +2,14 @@ import React from 'react';
 import moment from 'moment';
 import './flight.scss';
 import PropTypes from 'prop-types';
-
-const showStatusOfFlight = (status, time) => {
-  const statusTypes = {
-    CX: 'canceled',
-    DP: `departed at ${moment(time).format('HH:mm')}`,
-    LN: `landed at ${moment(time).format('HH:mm')}`,
-  };
-
-  return statusTypes[status];
-};
+import { showStatusOfFlight } from '../../../utils/flightsUtils';
 
 const Flight = ({ flightData }) => {
+  // const time = flightData.timeDepShedule || flightData.timeArrShedule;
+  // const city = flightData['airportToID.city_en'] || flightData['airportFromID.city_en'];
+  // const flightNumber = `${flightData['carrierID.IATA'] || ''} ${flightData.fltNo}`;
+  // const status = showStatusOfFlight(flightData.status, flightData.timeTakeofFact);
+  // const terminal = flightData.term;
   return (
     <tr className="timetable__line">
       <td className="timetable__item">

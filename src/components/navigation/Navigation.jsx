@@ -1,20 +1,16 @@
-import moment from 'moment/moment';
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import './navigation.scss';
 import 'react-calendar/dist/Calendar.css';
 import Calendar from 'react-calendar';
 import PropTypes from 'prop-types';
-import {
-  DATE_FORMAT,
-  DATE_FORMAT_SHORT,
-  yesterday,
-  today,
-  tomorrow,
-} from '../../../utils/dateUtils';
+import { DATE_FORMAT, DATE_FORMAT_SHORT, yesterday, today, tomorrow } from '../../utils/dateUtils';
+import moment from 'moment/moment';
 
-const Navigation = ({ searchedDate, setSearchedDate, url }) => {
+const Navigation = ({ searchedDate, setSearchedDate }) => {
+  const url = useLocation().pathname;
   const [isReactCalendarActive, setReactCalendarActive] = useState(false);
 
   const setClassNamesDate = date =>
@@ -109,7 +105,6 @@ const Navigation = ({ searchedDate, setSearchedDate, url }) => {
 };
 
 Navigation.propTypes = {
-  url: PropTypes.string.isRequired,
   searchedDate: PropTypes.string.isRequired,
   setSearchedDate: PropTypes.func.isRequired,
 };
