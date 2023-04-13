@@ -12,7 +12,6 @@ const FlightSearchForm = ({ setSearchedText }) => {
     searchParams.get('search') && setSearchedInputValue(searchParams.get('search'));
   }, [searchParams.get('search')]);
 
-  console.log(searchedInputValue);
   return (
     <div className="search-flights__form-wrap">
       <h2 className="search-flights__title">Flight Search</h2>

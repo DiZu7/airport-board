@@ -20,16 +20,16 @@ const SearchFlights = ({
     <main className="search-flights">
       <FlightSearchForm setSearchedText={setSearchedText} />
       <Navigation setSearchedDate={setSearchedDate} searchedDate={searchedDate} url={url} />
-      {flights.length === 0 ? (
+      {/* {flights.length === 0 ? (
         <NothingFound />
-      ) : (
+      ) : ( */}
         <Timetable
           flights={flights}
           searchedDate={searchedDate}
           searchedText={searchedText}
           url={url}
         />
-      )}
+      {/* )} */}
     </main>
   );
 };

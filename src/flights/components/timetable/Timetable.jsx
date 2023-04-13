@@ -6,11 +6,11 @@ import PropTypes from 'prop-types';
 import { DATE_FORMAT, DATE_FORMAT_REVERSE } from '../../../utils/dateUtils';
 
 const Timetable = ({ flights, searchedDate, searchedText, url }) => {
-  const filteredByDateFlights = flights.filter(flightData =>
-    flightData[url === '/departure' ? 'timeDepShedule' : 'timeArrShedule'].includes(
-      moment(searchedDate, DATE_FORMAT).format(DATE_FORMAT_REVERSE),
-    ),
-  );
+  // const filteredByDateFlights = flights.filter(flightData =>
+  //   flightData[url === '/departure' ? 'timeDepShedule' : 'timeArrShedule'].includes(
+  //     moment(searchedDate, DATE_FORMAT).format(DATE_FORMAT_REVERSE),
+  //   ),
+  // );
 
   return (
     <table className="search-flights__timetable timetable">
@@ -25,7 +25,8 @@ const Timetable = ({ flights, searchedDate, searchedText, url }) => {
       </thead>
       <tbody>
         {searchedText
-          ? filteredByDateFlights
+          ? flights
+              // ? filteredByDateFlights
               .filter(
                 flightData =>
                   flightData.fltNo.includes(searchedText) ||
@@ -34,7 +35,8 @@ const Timetable = ({ flights, searchedDate, searchedText, url }) => {
                     .includes(searchedText.toLowerCase()),
               )
               .map(flightData => <Flight key={flightData.ID} flightData={flightData} />)
-          : filteredByDateFlights.map(flightData => (
+          : flights.map(flightData => (
+              // : filteredByDateFlights.map(flightData => (
               <Flight key={flightData.ID} flightData={flightData} />
             ))}
       </tbody>

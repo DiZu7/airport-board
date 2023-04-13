@@ -12,7 +12,7 @@ const flightsReducer = (state = initialState, action) => {
     case FLIGHTS_LIST_RECIEVED: {
       return {
         ...state,
-        flightsList: action.payload.flightsList.body,
+        flightsList: action.payload.flightsList,
       };
     }
     default:
