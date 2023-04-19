@@ -1,21 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Flight from '../flight/Flight';
 import './flightsList.scss';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { departureFlightsListSelector, arrivalFlightsListSelector } from '../../flights.selectors';
+import { flightsListSelector } from '../../flights.selectors';
 import * as flightsActions from '../../flights.actions';
 import { filterFlightsBySearchedValue } from '../../../utils/flightsUtils';
 
-const FlightsList = ({ flights, getFlightsList, searchedDate, searchedText }) => {
+const FlightsList = ({ flights, getFlightsList }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const searchedText = searchParams.get('search');
+  const searchedDate = searchParams.get('date');
+
   useEffect(() => {
-    getFlightsList(searchedDate);
+    if (searchedDate) {
+      getFlightsList(searchedDate);
+    }
   }, [searchedDate]);
 
-  const url = useLocation().pathname;
-  return flights.length !== 0 ? (
+  const flightsList = useLocation().pathname === '/departure' ? flights.departure : flights.arrival;
+  return flightsList.length !== 0 ? (
     <table className="search-flights__timetable timetable">
       <thead>
         <tr className=" timetable__line-header">
@@ -28,10 +35,10 @@ const FlightsList = ({ flights, getFlightsList, searchedDate, searchedText }) =>
       </thead>
       <tbody>
         {searchedText
-          ? filterFlightsBySearchedValue(flights, searchedText).map(flightData => (
+          ? filterFlightsBySearchedValue(flightsList, searchedText).map(flightData => (
               <Flight key={flightData.ID} flightData={flightData} />
             ))
-          : flights.map(flightData => <Flight key={flightData.ID} flightData={flightData} />)}
+          : flightsList.map(flightData => <Flight key={flightData.ID} flightData={flightData} />)}
       </tbody>
     </table>
   ) : (
@@ -41,16 +48,14 @@ const FlightsList = ({ flights, getFlightsList, searchedDate, searchedText }) =>
   );
 };
 
-// FlightsList.propTypes = {
-//   flights: PropTypes.object.isRequired,
-//   // searchedText: PropTypes.string,
-//   searchedDate: PropTypes.string.isRequired,
-//   getFlightsList: PropTypes.func.isRequired,
-// };
+FlightsList.propTypes = {
+  flights: PropTypes.object.isRequired,
+  getFlightsList: PropTypes.func.isRequired,
+};
 
 const mapState = state => {
   return {
-    flights: departureFlightsListSelector(state) || arrivalFlightsListSelector(state),
+    flights: flightsListSelector(state),
   };
 };
 

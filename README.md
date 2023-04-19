@@ -6,6 +6,8 @@ Ability to search the flight by flight number or destination/
 The sky is closed and all flights are canceled from February 24, 2022 due to the war.
 Therefore, it is possible to view flights for previous dates.
 
+FYI: there is a certain feature of the API work: server can return a status 500 in response to the first request for each new searched date (should reload page), then mostly it works correct.
+
 ### [Site link](https://tangerine-kulfi-698f01.netlify.app)
 
 ### The tech stack is:

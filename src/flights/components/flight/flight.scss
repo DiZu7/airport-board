@@ -19,5 +19,16 @@
     &_status {
       text-transform: lowercase;
     }
+
+    &_flight {
+      display: flex;
+      align-items: center;
+    }
+
+    &_logo {
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+    }
   }
 }

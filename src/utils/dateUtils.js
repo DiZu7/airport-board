@@ -7,4 +7,3 @@ export const DATE_FORMAT_SHORT = 'DD/MM';
 export const yesterday = moment().subtract(1, 'day');
 export const today = moment();
 export const tomorrow = moment().add(1, 'day');
-

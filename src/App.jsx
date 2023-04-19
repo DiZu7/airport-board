@@ -8,20 +8,20 @@ import store from './store';
 
 const App = () => {
   return (
-    <Provider store={store}>
-      <Router>
+    <Router>
+      <Provider store={store}>
         <div className="page">
           <Header />
           <Routes>
-            <Route path="/" element={<Navigate replace to="/departure" />} />
+            <Route path="/" element={<Navigate to="/departure" replace />} />
             <Route path="/departure" element={<SearchFlights />} />
             <Route path="/arrival" element={<SearchFlights />} />
           </Routes>
           <section className="optional"></section>
           <footer className="footer"></footer>
         </div>
-      </Router>
-    </Provider>
+      </Provider>
+    </Router>
   );
 };
 

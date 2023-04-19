@@ -5,20 +5,19 @@ export const filterFlightsBySearchedValue = (flights, searchedValue) =>
   flights.filter(
     flightData =>
       flightData.fltNo.includes(searchedValue) ||
-      flightData['airportToID.city_en' || 'airportFromID.city_en']
-        .toLowerCase()
-        .includes(searchedValue.toLowerCase()),
+      flightData['airportToID.city_en']?.toLowerCase().startsWith(searchedValue.toLowerCase()) ||
+      flightData['airportFromID.city_en']?.toLowerCase().startsWith(searchedValue.toLowerCase()),
   );
 
-export const filterFlightsByDate = (response, date) => {
-  if (response.length === 0) {
+export const filterFlightsByDate = (flights, date) => {
+  if (flights.length === 0) {
     return {
       departure: [],
       arrival: [],
     };
   }
 
-  return Object.entries(response).reduce((acc, [key, flightsList]) => {
+  return Object.entries(flights).reduce((acc, [key, flightsList]) => {
     const filteredFlightsListByDate = flightsList.filter(flight =>
       (flight.timeDepShedule || flight.timeArrShedule).includes(
         moment(date, DATE_FORMAT).format(DATE_FORMAT_REVERSE),

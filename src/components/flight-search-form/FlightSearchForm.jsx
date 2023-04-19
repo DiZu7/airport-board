@@ -1,27 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import './flightSearchForm.scss';
 import { useSearchParams } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
-const FlightSearchForm = ({ setSearchedText }) => {
+const FlightSearchForm = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const [searchedInputValue, setSearchedInputValue] = useState(
+    searchParams.get('search') ? searchParams.get('search') : '',
+  );
 
-  const [searchedInputValue, setSearchedInputValue] = useState('');
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    setSearchParams(searchParams => {
+      searchParams.set('search', searchedInputValue);
+      return searchParams;
+    });
+  };
 
   useEffect(() => {
-    searchParams.get('search') && setSearchedInputValue(searchParams.get('search'));
-  }, [searchParams.get('search')]);
+    setSearchParams(searchParams => {
+      searchParams.set('search', searchedInputValue);
+      return searchParams;
+    });
+
+    !searchedInputValue && setSearchParams(searchParams.delete('search'));
+  }, [searchParams.get('search'), searchParams]);
 
   return (
     <div className="search-flights__form-wrap">
       <h2 className="search-flights__title">Flight Search</h2>
-      <form
-        className="search-flights__form form-search"
-        onSubmit={e => {
-          e.preventDefault();
-          setSearchedText(searchedInputValue);
-        }}
-      >
+      <form className="search-flights__form form-search" onSubmit={handleSubmit}>
         <div className="form-search__icon">
           <i className="fa-sharp fa-solid fa-magnifying-glass"></i>
         </div>
@@ -40,7 +48,4 @@ const FlightSearchForm = ({ setSearchedText }) => {
   );
 };
 
-FlightSearchForm.propTypes = {
-  setSearchedText: PropTypes.func,
-};
 export default FlightSearchForm;
